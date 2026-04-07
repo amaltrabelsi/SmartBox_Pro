@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartBox Pro | L'Innovation Culinaire IoT</title>
+    <meta name="description" content="Découvrez SmartBox Pro, la première lunch box intelligente 3-en-1 : Refroidissement, Chauffage et Mixage intelligent via IoT.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #F8FAFC;
+            --accent-cyan: #0891B2;
+            --accent-orange: #EA580C;
+            --accent-purple: #9333EA;
+            --text-main: #0F172A;
+            --text-sub: #64748B;
+            --card-glass: rgba(255, 255, 255, 0.7);
+            --cooling-grad: linear-gradient(135deg, #22D3EE, #0891B2);
+            --heating-grad: linear-gradient(135deg, #FB923C, #EA580C);
+            --blender-grad: linear-gradient(135deg, #C084FC, #9333EA);
+            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 10%;
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .cta-btn-nav {
+            background: var(--accent-cyan);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(8, 145, 178, 0.3);
+            transition: 0.3s;
+        }
+
+        .cta-btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(8, 145, 178, 0.4);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            margin-top: 50px;
+            background: radial-gradient(circle at top right, rgba(8, 145, 178, 0.05), transparent);
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 50px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero h1 span {
+            background: var(--cooling-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 18px 35px;
+            border-radius: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--cooling-grad);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(8, 145, 178, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-main);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: bounce 6s infinite ease-in-out;
+        }
+
+        .hero-image img {
+            width: 45%;
+            max-width: 600px;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        /* --- Features Section --- */
+        .features {
+            padding: 100px 10%;
+            text-align: center;
+        }
+
+        .features-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .features-header p {
+            color: var(--text-sub);
+            margin-bottom: 60px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            transition: 0.4s;
+            border: 1px solid rgba(0,0,0,0.03);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .feature-card.cooling i { color: #0891B2; }
+        .feature-card.heating i { color: #EA580C; }
+        .feature-card.blender i { color: #9333EA; }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        .feature-card .grad-line {
+            height: 4px;
+            width: 40px;
+            margin-top: 20px;
+            border-radius: 2px;
+        }
+
+        /* --- Showcase Section --- */
+        .showcase {
+            padding: 100px 10%;
+            display: flex;
+            align-items: center;
+            gap: 100px;
+            background: #fff;
+        }
+
+        .showcase-image { flex: 1; }
+        .showcase-image img { 
+            width:70%; 
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .showcase-content { flex: 1; }
+        .showcase-content h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .showcase-content .tech-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .tech-item .icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(8, 145, 178, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 80px 10% 40px;
+            background: #0F172A;
+            color: white;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .socials a {
+            color: white;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .socials a:hover { opacity: 1; }
+
+        .copyright {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            opacity: 0.4;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .hero { flex-direction: column; text-align: center; height: auto; padding: 150px 5%; }
+            .hero-content { padding-right: 0; margin-bottom: 50px; }
+            .btn-group { justify-content: center; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .showcase { flex-direction: column; text-align: center; gap: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <i class="fas fa-cube"></i> SmartBox Pro
+        </div>
+        <div class="nav-links">
+            <a href="#features">Fonctionnalités</a>
+            <a href="#tech">Technologie</a>
+            <a href="#pro-order">Pré-commander</a>
+        </div>
+        <a href="#" class="cta-btn-nav">ACHETER</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>L'avenir du repas est <span>intelligent.</span></h1>
+            <p>La première Smart Box IoT au monde capable de refroidir, chauffer et mixer vos aliments avec une précision chirurgicale, directement depuis votre smartphone.</p>
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary">Explorer SmartBox</a>
+                <a href="#" class="btn btn-secondary">Voir la démo</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Hero Image Placeholder - To be replaced by generated path -->
+            <img src="smartbox.png" alt="SmartBox Pro Hardware">
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="features-header">
+            <h2>Une Expérience 3-en-1</h2>
+            <p>Conçue pour s'adapter à chaque instant de votre journée.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card cooling">
+                <i class="fas fa-snowflake"></i>
+                <h3>Refroidissement Actif</h3>
+                <p>Maintenez vos salades et boissons à 4°C. Idéal pour garder la fraîcheur intacte jusqu'au déjeuner.</p>
+                <div class="grad-line" style="background: var(--cooling-grad)"></div>
+            </div>
+            <div class="feature-card heating">
+                <i class="fas fa-fire"></i>
+                <h3>Chauffage Rapide</h3>
+                <p>Chauffez vos plats uniformément en quelques minutes sans dessécher les aliments. Précision IoT.</p>
+                <div class="grad-line" style="background: var(--heating-grad)"></div>
+            </div>
+            <div class="feature-card blender">
+                <i class="fas fa-blender"></i>
+                <h3>Mixage Intelligent</h3>
+                <p>Un smoothie frais en 30 secondes ? Appuyez sur un bouton et laissez le blender intégré faire le reste.</p>
+                <div class="grad-line" style="background: var(--blender-grad)"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech" class="showcase">
+        <div class="showcase-image">
+            <img src="smartbox_features.jpeg" alt="Internal Technology">
+        </div>
+        <div class="showcase-content">
+            <h2>Contrôle Total via l'App</h2>
+            
+            <div class="tech-item">
+                <div class="icon"><i class="fas fa-leaf"></i></div>
+                <div>
+                    <h3>Capteurs de Fraîcheur</h3>
+                    <p>Détectez en temps réel l'état de conservation de vos aliments grâce à l'analyse IoT intelligente.</p>
+                </div>
+            </div>
+
+            <div class="tech-item">
+                <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div>
+                    <h3>Localisation GPS</h3>
+                    <p>Ne perdez plus jamais votre SmartBox. Suivez sa position en temps réel sur la carte intégrée.</p>
+                </div>
+            </div>
+
+            <div class="tech-item">
+                <div class="icon"><i class="fas fa-battery-full"></i></div>
+                <div>
+                    <h3>Autonomie de 24h</h3>
+                    <p>Une batterie haute performance qui vous accompagne toute la journée, même pour plusieurs cycles de chauffe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pre-order" style="padding: 100px 10%; text-align: center; background: rgba(8, 145, 178, 0.03);">
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">Rejoignez la Révolution.</h2>
+        <p style="color: var(--text-sub); margin-bottom: 40px; font-size: 1.2rem;">Les pré-commandes sont ouvertes. Livraison prévue pour Septembre 2026.</p>
+        <a href="#" class="btn btn-primary" style="font-size: 1.5rem; padding: 20px 60px;">RÉSERVER POUR 149 DT</a>
+    </section>
+
+    <footer>
+        <span class="footer-logo">SmartBox Pro</span>
+        <p>L'innovation au service de votre bien-être culinaire.</p>
+        <div class="socials">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p class="copyright">&copy; 2026 SmartBox IoT Solutions. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
